@@ -58,9 +58,30 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
+'use strict'
+const audios = document.querySelectorAll('audio[data-key]');
+window.addEventListener('keyup', playAudio);
+audios.forEach( a => a.addEventListener('ended', stopPlaying));
+
+
+function stopPlaying(event) {
+    const keyCode = this.getAttribute('data-key');
+    const button = document.querySelector(`div[data-key="${keyCode}"`);
+    button.classList.remove('playing');
+}
+
+function playAudio(event) {
+    const keyCode = event.keyCode;
+    const button = document.querySelector(`div[data-key="${keyCode}"`);
+    const audio = document.querySelector(`audio[data-key="${keyCode}"`);
+    button.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+}
+
+
 
 </script>
-
 
 </body>
 </html>
