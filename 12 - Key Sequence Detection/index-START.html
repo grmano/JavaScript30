@@ -7,6 +7,22 @@
 </head>
 <body>
 <script>
+const pressed = [];
+const secret = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+
+window.addEventListener('keyup', (e) => {
+  pressed.push(e.key);
+  if (pressed[pressed.length - 1] !== secret[pressed.length - 1]) {
+    pressed.length = 0;
+  }
+  if (secret.length === pressed.length) {
+    console.log('Ding Ding');
+    pressed.lenght = 0;
+  }
+
+  console.log(pressed);
+});
+
 </script>
 </body>
 </html>
